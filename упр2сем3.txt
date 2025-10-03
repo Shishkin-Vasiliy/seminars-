@@ -1,7 +1,0 @@
-N = int(input())
-A =[]
-for n in range(N):
-    if N%n == 0:
-        break
-    N = N/n 
-    A.append(n)
