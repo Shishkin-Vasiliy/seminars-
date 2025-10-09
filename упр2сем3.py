@@ -1,33 +1,25 @@
 n = int(input())
 def func(n):
     if n < 2:
-        return[]
+        return []
     elements = []
-
     d = 2
-  #  while n > 1: - -  это эквивалентно elements.append(n) в строчке 14
+    while n > 1:
+        while n % d == 0:
+            elements.append(d)
+            n //= d
+        d += 1       
+    return elements
+print(func(n)) 
+degrees = [f"{func(n).count(num)}" for num in func(n)]
+degrees1 = list(map(int, degrees))
+print(degrees1)
 
-    while n % d == 0:
-         elements.append(d)
-         n //= d
-    d += 1       
-    elements.append(n)
+output0 = [f"{func(n)[i]}^{degrees1[i]}" for i in range(len(degrees1))]
+#print('*'.join(output))
 
-
-    #for i in range(2,n+1):
-        # if n%i == 0:
-        #    for j in range (2,i+1):
-        #        if i%j == 0:
-        #            elements.append(j)
-        #        elements.append(i)
-            
-         #   elements.append(i)
-    primes = '*'.join(map(str, elements))
-   
-         
-
-        
-    return primes   
-     
-print(func(n))
-         
+output = []
+for el in output0:
+    if el not in output:
+        output.append(el)
+print(n,'=','*'.join(output))    
